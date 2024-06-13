@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        /* Add any custom styles here */
+    </style>
+</head>
+
+<body class="bg-gray-100">
+
+    <!-- Navigation Header -->
+    <header class="bg-blue-600 py-4">
+        <div class="container mx-auto px-4">
+            <nav class="flex justify-between items-center">
+                <div class="flex-shrink-0">
+                  <h2 class="text-3xl font-bold text-center text-gray-900 mb-4">Welcome, {{ session['username'] }}!</h2>
+                </div>
+                <div class="flex space-x-4">
+                    <a href="{{ url_for('view') }}" class="text-white hover:underline">View Data</a>
+                    <a href="{{ url_for('download') }}" class="text-white hover:underline">Download Data</a>
+                    <a href="{{ url_for('logout') }}"class="text-white hover:underline">Logout</a>
+                    
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content Section -->
+    <div class="container mx-auto px-4 py-8">
+
+        <!-- Welcome Message -->
+        
+
+        <!-- Upload Form -->
+        <form id="uploadForm" method="POST" action="{{ url_for('upload') }}" enctype="multipart/form-data" class="mb-4">
+            <label for="files" class="block mb-2">Upload files:</label>
+            <input type="file" id="files" name="files" multiple
+                class="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:ring focus:ring-indigo-200">
+            <button type="submit" id="uploadButton"
+                class="mt-2 px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500">Upload</button>
+        </form>
+
+        <!-- Processing Message -->
+        <p id="processingMessage" class="hidden text-center text-gray-600">Please wait! Audio is Processing...</p>
+
+        <!-- Success Message -->
+        <p id="successMessage" class="hidden text-center text-green-600">Data successfully saved in your file. <a
+                id="viewDataLink" href="{{ url_for('view') }}" class="underline">View now</a></p>
+
+        <!-- Error Message -->
+        <p id="errorMessage" class="hidden text-center text-red-600">An error occurred during upload or processing.</p>
+
+      
+    </div>
+
+    <!-- JavaScript for Simulated Upload and Messages -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const uploadForm = document.getElementById('uploadForm');
+            const processingMessage = document.getElementById('processingMessage');
+            const successMessage = document.getElementById('successMessage');
+            const errorMessage = document.getElementById('errorMessage');
+
+            uploadForm.addEventListener('submit', function (event) {
+                event.preventDefault(); // Prevent default form submission
+
+                // Show processing message
+                processingMessage.classList.remove('hidden');
+
+                // Simulate async file upload and processing
+                setTimeout(function () {
+                    // On success (simulated)
+                    successMessage.classList.remove('hidden');
+                    processingMessage.classList.add('hidden');
+                }, 3000); // Adjust timeout as per your actual processing time
+
+                // Simulate error (remove this block in production, handle actual errors)
+                // setTimeout(function () {
+                //     errorMessage.classList.remove('hidden');
+                //     processingMessage.classList.add('hidden');
+                // }, 5000); // Simulated error after 5 seconds
+            });
+        });
+    </script>
+
+</body>
+
+</html>

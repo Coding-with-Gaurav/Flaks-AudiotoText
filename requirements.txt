@@ -1,0 +1,9 @@
+bcrypt==3.2.0
+Flask==2.0.2
+flask-pymongo==2.3.0
+pandas==1.4.0
+pydub==0.25.1
+whisper==1.0.0
+werkzeug==2.0.3
+
+# Install all the dependency for effeciently project developing

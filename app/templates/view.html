@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %}Your Data{% endblock %}
+
+{% block content %}
+<div class="container mx-auto px-4 py-8">
+    <h1 class="text-3xl font-bold text-gray-900 mb-4">Your Data</h1>
+
+    {% if tables %}
+        <div class="overflow-x-auto">
+            <table class="min-w-full bg-white border border-gray-200 shadow-md rounded-lg divide-y divide-gray-200">
+                <thead class="bg-gray-50">
+                    <tr>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Sr. No.</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Sample ID</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Weight</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-200">
+                    {% for row in tables %}
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap">{{ loop.index }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap">{{ row['SampleID'] }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap">{{ row['Weight'] }}</td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="3" class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">No data available.</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="flex justify-between items-center mt-4">
+            <!-- Back to main page button (left side) -->
+            <a href="{{ url_for('index') }}" class="block px-4 py-2 bg-gray-200 text-gray-700 rounded-md shadow-md hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-400">Back to Main Page</a>
+
+            <!-- Download data button (right side) -->
+            <a href="{{ url_for('download') }}" class="block px-4 py-2 bg-indigo-600 text-white rounded-md shadow-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500">Download Data</a>
+        </div>
+    {% else %}
+        <p class="text-gray-500 mt-4">No data available.</p>
+    {% endif %}
+</div>
+{% endblock %}
