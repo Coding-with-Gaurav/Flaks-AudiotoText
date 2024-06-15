@@ -5,6 +5,5 @@ pandas==1.4.0
 pydub==0.25.1
 whisper==1.0.0
 werkzeug==2.0.3
-dotenv==0.0.5
 
 # Install all the dependency for effeciently project developing

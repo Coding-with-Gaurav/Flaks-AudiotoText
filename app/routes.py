@@ -1,5 +1,3 @@
-# app/routes.py
-
 from flask import render_template, request, redirect, url_for, flash, session, send_file,  make_response
 from werkzeug.utils import secure_filename
 import os
