@@ -2,12 +2,11 @@
 
 from flask import Flask
 from flask_pymongo import PyMongo
-from dotenv import load_dotenv
-import os
 from config import config
 
+
+
 # Load environment variables from .env file
-load_dotenv()
 
 mongo = PyMongo()
 
