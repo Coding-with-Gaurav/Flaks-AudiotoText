@@ -13,7 +13,7 @@ def create_app(config_name='development'):
     # Load configuration from config.py based on the provided config name
     app.config.from_object('config.Config')
     print(f"MONGO_URI: {app.config['MONGO_URI']}")  # Debug print
-
+    
     # Configure paths to static and template files
     app.static_folder = 'static'
     app.template_folder = 'templates'
