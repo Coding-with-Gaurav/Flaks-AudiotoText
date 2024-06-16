@@ -25,11 +25,11 @@ def convert_to_wav(mp4_file_path):
     try:
         audio = AudioSegment.from_file(mp4_file_path, format="mp4")
         audio.export(wav_file_path, format="wav")
-        print(f"Converted {mp4_file_path} to {wav_file_path}")  # Print success message
+        print(f"Converted {mp4_file_path} to {wav_file_path}")  
         return wav_file_path
     except Exception as e:
         error_message = f"Error converting {mp4_file_path} to WAV: {str(e)}"
-        print(error_message)  # Print error message
+        print(error_message)  
         return None
 
 def audio_file_to_text(wav_file_path):
@@ -37,11 +37,11 @@ def audio_file_to_text(wav_file_path):
         model = whisper.load_model("base")
         result = model.transcribe(wav_file_path)
         text = result['text']
-        print(f"Transcription result: {text}")  # Print success message
+        print(f"Transcription result: {text}")  
         return text
     except Exception as e:
         error_message = f"Error transcribing audio file {wav_file_path}: {str(e)}"
-        print(error_message)  # Print error message
+        print(error_message)  
         return None
 
 def save_to_excel(data, file_name="sample_file.xlsx"):
@@ -52,15 +52,15 @@ def save_to_excel(data, file_name="sample_file.xlsx"):
                 df_new = pd.DataFrame(data, columns=["Sample ID", "Weight"])
                 df_combined = pd.concat([df_existing, df_new], ignore_index=True)
                 df_combined.to_excel(file_name, index=False)
-                print(f"Data appended and saved to {file_name}")  # Print success message
+                print(f"Data appended and saved to {file_name}")  
             else:
                 df = pd.DataFrame(data, columns=["Sample ID", "Weight"])
                 df.to_excel(file_name, index=False)
-                print(f"New data saved to {file_name}")  # Print success message
+                print(f"New data saved to {file_name}")
         else:
-            print("No data to save.")  # Print information message
+            print("No data to save.")  
     except Exception as e:
         error_message = f"Error saving data to {file_name}: {str(e)}"
-        print(error_message)  # Print error message
+        print(error_message)  
 
-# error during deployment
+
