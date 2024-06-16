@@ -2,10 +2,13 @@
 
 from flask import Flask
 from flask_pymongo import PyMongo
-from pymongo import MongoClient
 from config import config
+from pymongo import MongoClient
 
-# Create an instance of PyMongo
+
+
+# Load environment variables from .env file
+
 mongo = PyMongo()
 
 def create_app(config_name='development'):
