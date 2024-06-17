@@ -20,7 +20,7 @@
                 </div>
                 <div class="flex space-x-4">
                     <a href="{{ url_for('view') }}" class="text-white hover:underline">View Data</a>
-                    <a href="{{ url_for('download') }}" class="text-white hover:underline">Download Data</a>
+                    <a href="{{ url_for('download') }}" class="text-white hover:underline">Download</a>
                     <a href="{{ url_for('logout') }}"class="text-white hover:underline">Logout</a>
                     
                 </div>
@@ -31,8 +31,6 @@
     <!-- Main Content Section -->
     <div class="container mx-auto px-4 py-8">
 
-        <!-- Welcome Message -->
-        
 
         <!-- Upload Form -->
         <form id="uploadForm" method="POST" action="{{ url_for('upload') }}" enctype="multipart/form-data" class="mb-4">

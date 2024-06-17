@@ -1,0 +1,45 @@
+<!-- set_file_name.html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Set File Name</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+
+<div class="container mx-auto px-4 py-8">
+    <h2 class="text-2xl font-bold text-center text-gray-900 mb-4">Set or Choose File Name</h2>
+
+    <form method="POST" action="{{ url_for('index') }}" class="max-w-md mx-auto">
+        <div class="mb-4">
+            <label for="file_name" class="block text-gray-700 font-bold mb-2">Enter File Name:</label>
+            <input type="text" id="file_name" name="file_name" placeholder="Enter file name" required
+                   class="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:ring focus:ring-indigo-200">
+        </div>
+        
+        <div class="mb-4">
+            <label class="block text-gray-700 font-bold mb-2">Choose Action:</label>
+            <div>
+                <input type="radio" id="create_new" name="action" value="create_new" checked>
+                <label for="create_new">Create New File</label>
+            </div>
+            <div>
+                <input type="radio" id="use_existing" name="action" value="use_existing">
+                <label for="use_existing">Use Existing File</label>
+            </div>
+        </div>
+
+        <button type="submit"
+                class="mt-2 px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 focus:outline-none focus:ring focus:ring-indigo-500">
+            Continue
+        </button>
+    </form>
+
+    
+</div>
+
+</body>
+</html> -->

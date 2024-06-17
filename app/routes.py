@@ -1,5 +1,3 @@
-# app/routes.py
-
 from flask import render_template, request, redirect, url_for, flash, session, send_file
 from werkzeug.utils import secure_filename
 import os
@@ -25,10 +23,10 @@ def register_routes(app, mongo):
         if request.method == 'POST':
             username = request.form['username']
             password = request.form['password']
-            # Check if the user exists in the database
+           
             user = mongo.db.users.find_one({"username": username})
 
-            # Verify the password
+            
             if user and bcrypt.checkpw(password.encode('utf-8'), user['password']):
                 session['username'] = username
                 flash('Login successful!', 'success')
@@ -45,11 +43,11 @@ def register_routes(app, mongo):
             password = request.form['password']
             hashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
 
-            # Check if the username already exists
+            
             if mongo.db.users.find_one({"username": username}):
                 flash('Username already exists', 'danger')
             else:
-                # Insert new user into the database
+                
                 mongo.db.users.insert_one({"username": username, "password": hashed_password})
                 flash('Signup successful! Please log in.', 'success')
                 return redirect(url_for('login'))
@@ -110,7 +108,7 @@ def register_routes(app, mongo):
         if 'username' not in session:
             return redirect(url_for('login'))
 
-        file_path = os.path.join(os.getcwd(), 'sample_file.xlsx')  # Adjust this path accordingly
+        file_path = os.path.join(os.getcwd(), 'sample_file.xlsx') 
 
         if os.path.exists(file_path):
             try:
